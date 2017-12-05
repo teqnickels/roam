@@ -1,4 +1,4 @@
-# roam
+# Roam
  A travel community, code-named Roam for now, for users to share tips about their favorite locations around the world.
 
 
@@ -46,7 +46,7 @@ Specifications
 
 ## Sprint 1: Basic Auth & Profiles
 
-__A user should be able to:
+__A user should be able to:__
 
 - [ ] Navigate to "/" and see a basic splash page.
 - [ ] See the name of the website on the splash page.
