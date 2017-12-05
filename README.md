@@ -65,7 +65,7 @@ __A user should be able to:__
 
 ## Stretch
 
-__A user should be able to:
+__A user should be able to:__
 
 - [ ] See a "default" profile photo on their profile page before adding their own photo.
 - [ ] Update their profile photo (consider using Uploadcare).
@@ -73,7 +73,7 @@ __A user should be able to:
 - [ ] Receive a welcome email after creating an account.
 - [ ] Sprint 2: Travel Tip CRUD
 
-__A user should be able to:
+__A user should be able to:__
 
 - [ ] Put at least 2 cities data in your database (make sure to include Oakland!)
 - [ ] View the "Oakland" city page (at "/cities/1").
@@ -92,7 +92,7 @@ __A user should be able to:
 
 ## Stretch
 
-__A user should be able to:
+__A user should be able to:__
 
 - [ ] Visit city pages via pretty urls, like "/cities/san-francisco".
 - [ ] Visit user profile pages via pretty urls, like "/users/james".
@@ -101,7 +101,7 @@ __A user should be able to:
 
 ## Sprint 3: Validations & Authorization
 
-__A user should be able to:
+__A user should be able to:__
 
 - [ ] View city pages for "London" and "Gibraltar".
 - [ ] Verify that a new post they create is successfully published on the correct city page.
@@ -117,7 +117,7 @@ __A user should be able to:
 
 ## Stretch
 
-__A user should be able to:
+__A user should be able to:__
 
 - [ ] View an error message when form validations fail, for the following validations:
 - [ ] Title must be between 1 and 200 characters.
@@ -134,7 +134,7 @@ __A user should be able to:
 
 ## Stretch
 
-__A user should be able to:
+__A user should be able to:__
 
 - [ ] Comment on individual posts.
 - [ ] See the number of comments a post has on the post's "show" page.
