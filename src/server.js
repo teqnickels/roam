@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./server/routes');
+const routes = require('./server/routes/authenticated');
 const methodOverride = require('method-override');
 const path = require('path');
 const passport = require('passport');
@@ -11,9 +11,8 @@ require('dotenv').config();
 
 const app = express();
 
-
 const sessionOptions = {
-  secret: 'm5a6r2l9b7o3r5o',
+  secret: process.env.SESSION_SECRET,
   resave: 'true',
   saveUnitialized: 'true',
 };
@@ -45,4 +44,4 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
 });
 
-// module.exports = app;
+module.exports = app;
