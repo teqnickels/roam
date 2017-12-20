@@ -1,17 +1,11 @@
 DROP TABLE IF EXISTS roam;
 
-CREATE EXTENDION IG NOT EXISTS CITEXT
-
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
-  email CITEXT VARCHAR(255) NOT NULL,
   first_name VARCHAR(255),
   last_name VARCHAR(255),
-  password VARCHAR(50),
-  address VARCHAR(100),
-  city VARCHAR(50),
-  state VARCHAR(2),
-  zip INTEGER
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255)
 );
 
 CREATE TABLE posts(
