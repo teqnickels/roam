@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const getUserEmail = require('../../models/db/authentication');
+const { getUserEmail } = require('../../models/db/authentication');
 
 const hash = (password) => {
   return new Promise((resolve, reject) => {
@@ -21,8 +21,8 @@ const hash = (password) => {
 const checkIfExistsOnLogin = (emailOnLoginAttempt) => {
   return getUserEmail(emailOnLoginAttempt)
     .then((results) => {
-      console.log("This is the result", results, results.email)
-      if(results.length > 0 ) {
+      console.log(results.email, emailOnLoginAttempt )
+      if(results.email == emailOnLoginAttempt) {
         return true
       } else {
         return false

@@ -16,4 +16,4 @@ const getUserEmail = (email) => {
   return db.one(getUser, [email])
 }
 
-module.exports = register;
+module.exports = { register, getUserEmail };
