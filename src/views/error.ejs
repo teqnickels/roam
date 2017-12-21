@@ -1,0 +1,24 @@
+<% include partials/header %>
+
+  <div class="page-container">
+    <h1>Oh Poops!</h1>
+  </div>
+
+  <div class="page-container">
+    <img class="rainbow" src="../../images/rainbow.gif">
+  </div>
+
+  <div class="page-container">
+    <% if(message) { %>
+      <h2 class="error-message"><%= message %></h2>
+    <% } %>
+  </div>
+  
+  <br>
+  <br>
+
+  <div class="page-container">
+    <form action="/signup" method="GET">
+    <button>Take Me Back to the Login Page</button>
+    </form>
+  </div>

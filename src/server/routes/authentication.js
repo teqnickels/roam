@@ -12,10 +12,17 @@ router.post('/signup', (request, response) => {
   const { email } = request.body;
   const { password } = request.body;
 
+  checkIfExistsOnLogin(email)
+    .then((result) => {
+      if(result ==true) {
+        response.render('error', {message: 'This User Already Exists'})
+      }
+  })
   hash(password)
     .then((encryptedPassword) => {
      register(firstName, lastName, email, encryptedPassword)
       .then((result) => {
+        console.log("PASSWORD ENCRYPTED:::=>",encryptedPassword)
         response.redirect('/')
       })
   })
@@ -26,7 +33,7 @@ router.post('/login', (request, response) => {
   console.log("This is the email entered:", email)
   checkIfExistsOnLogin(email)
   .then((result) => {
-    if(result==true) {
+    if(result) {
       response.redirect('/')
     }else{
       console.log('USER DOES NOT EXIST')
@@ -34,6 +41,10 @@ router.post('/login', (request, response) => {
     }
 
   })
+})
+
+router.get('/error', (request, response) => {
+  response.render('error', {message: null})
 })
 
 
