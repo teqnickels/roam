@@ -168,3 +168,20 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
+.rainbow {
+  width:200px;
+}
+
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uh-oh {
+  max-width: 50%;
+}
+.error-container {
+  max-width: 50%;
+}
