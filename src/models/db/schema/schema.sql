@@ -5,7 +5,7 @@ CREATE TABLE users(
   first_name VARCHAR(255),
   last_name VARCHAR(255),
   email VARCHAR(255) NOT NULL,
-  password VARCHAR(255)
+  password VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE posts(
@@ -14,10 +14,6 @@ CREATE TABLE posts(
   blog TEXT NOT NULL,
   user_id INTEGER REFERENCES users(id)
 );
-
-/*
-  USERS CAN SEARCH BY STATE, CITY, PLACES, EVENTS
-*/
 
 CREATE TABLE geolocations(
   id SERIAL PRIMARY KEY,

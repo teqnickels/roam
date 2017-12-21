@@ -16,23 +16,24 @@ router.post('/signup', (request, response) => {
     .then((encryptedPassword) => {
      register(firstName, lastName, email, encryptedPassword)
       .then((result) => {
-        console.log('lil bobby walker :: ==>')
         response.redirect('/')
       })
-      .catch(console.error)
   })
 });
 
 router.post('/login', (request, response) => {
   const { email } = request.body
   console.log("This is the email entered:", email)
+  checkIfExistsOnLogin(email)
+  .then((result) => {
+    if(result==true) {
+      response.redirect('/')
+    }else{
+      console.log('USER DOES NOT EXIST')
+      //SHOW EMAIL OR PASSWORD WRONG MSG
+    }
 
-  if(checkIfExistsOnLogin(email)==true) {
-    response.redirect('/')
-  }else{
-    console.log('USER DOES NOT EXIST')
-    //SHOW EMAIL OR PASSWORD WRONG MSG
-  }
+  })
 })
 
 
