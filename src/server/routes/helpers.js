@@ -18,16 +18,37 @@ const hash = (password) => {
   })
 }
 
-const checkIfExistsOnLogin = (emailOnLoginAttempt) => {
+const checkIfUserExistsInDb = (emailOnLoginAttempt) => {
   return getUserEmail(emailOnLoginAttempt)
     .then((results) => {
-      console.log(results.email, emailOnLoginAttempt )
-      if(results.email == emailOnLoginAttempt) {
-        return true
+      if((results || {}).email == emailOnLoginAttempt) {
+          user = {
+            email: results.email,
+            hashedPassword: results.password
+          }
+        return user
       } else {
         return false
       }
     })
+    .catch(console.error)
   }
 
-module.exports = { hash, checkIfExistsOnLogin };
+const comparePasswords = (passwordFromDb, passwordAttempt) => {
+  console.log('COMPARING PASSWORDS', passwordFromDb, passwordAttempt)
+  return bcrypt.compare(passwordAttempt, passwordFromDb, (err, res) => {
+    if(res) {
+      return true
+    }
+  })
+}
+
+
+
+
+
+
+
+
+
+module.exports = { hash, checkIfUserExistsInDb, comparePasswords };

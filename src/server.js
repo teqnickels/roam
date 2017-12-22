@@ -1,21 +1,24 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./server/routes/authenticated');
 const methodOverride = require('method-override');
 const path = require('path');
 const passport = require('passport');
+const pgSession = require('connect-pg-simple')
 const session = require('express-session');
-require('dotenv').config();
-
 // const logger = require('morgan');
 
 const app = express();
 
-const sessionOptions = {
+app.use(session({
+  store: new (pgSession(session))(),
   secret: process.env.SESSION_SECRET,
-  resave: 'true',
-  saveUnitialized: 'true',
-};
+  resave: 'false',
+  saveUninitialized:'false',
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+}));
+
 
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
@@ -27,7 +30,6 @@ app.use(methodOverride('_method'));
 
 app.use('/', routes);
 
-app.use(session(sessionOptions));
 
 
 // Initialize passport
