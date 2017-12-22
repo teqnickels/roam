@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const register = require('../../models/db/authentication');
-const { hash, checkIfExistsOnLogin } = require('./helpers')
+const { register } = require('../../models/db/authentication');
+const { hash, checkIfUserExistsInDb, comparePasswords } = require('./helpers')
 
 router.get('/signup', (request, response) => {
   response.render('signup');
@@ -12,36 +12,36 @@ router.post('/signup', (request, response) => {
   const { email } = request.body;
   const { password } = request.body;
 
-  checkIfExistsOnLogin(email)
-    .then((result) => {
-      if(result ==true) {
+  return checkIfUserExistsInDb(email)
+    .then((results) => {
+      if(results) {
         response.render('error', {message: 'This User Already Exists'})
-      }
+      } else {
+        hash(password)
+        .then((encryptedPassword) => {
+          register(firstName, lastName, email, encryptedPassword)
+          .then((result) => {
+            response.redirect('/')
+          })
+        })
+      };
+    })
   })
-  hash(password)
-    .then((encryptedPassword) => {
-     register(firstName, lastName, email, encryptedPassword)
-      .then((result) => {
-        console.log("PASSWORD ENCRYPTED:::=>",encryptedPassword)
-        response.redirect('/')
-      })
-  })
-});
 
 router.post('/login', (request, response) => {
   const { email } = request.body
-  console.log("This is the email entered:", email)
-  checkIfExistsOnLogin(email)
-  .then((result) => {
-    if(result) {
-      response.redirect('/')
-    }else{
-      console.log('USER DOES NOT EXIST')
-      //SHOW EMAIL OR PASSWORD WRONG MSG
+  const { password: passwordAttempt } = request.body
+  return checkIfUserExistsInDb(email)
+  .then((user) => {
+    if(comparePasswords(user.hashedPassword, passwordAttempt)) {
+      response.render('/')
+    } else {
+      response.render('error', {message: 'Wrong Username or Password'})
     }
-
-  })
+  }).catch(console.error)
 })
+
+
 
 router.get('/error', (request, response) => {
   response.render('error', {message: null})
