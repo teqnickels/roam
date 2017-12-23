@@ -31,15 +31,17 @@ router.post('/signup', (request, response) => {
 router.post('/login', (request, response) => {
   const { email } = request.body
   const { password: passwordAttempt } = request.body
+
   return checkIfUserExistsInDb(email)
-  .then((user) => {
-    if(comparePasswords(user.hashedPassword, passwordAttempt)) {
-      response.render('/')
-    } else {
-      response.render('error', {message: 'Wrong Username or Password'})
-    }
-  }).catch(console.error)
-})
+    .then((user) => {
+        if(comparePasswords(user.hashedPassword, request.body.password)) {
+          response.render('home')
+        } else {
+          response.render('error', {message: 'Wrong Username or Password'})
+        }
+      })
+    })
+
 
 
 
