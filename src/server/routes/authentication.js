@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { register } = require('../../models/db/authentication');
+const { register, getUserByEmail } = require('../../models/db/authentication');
 const { hash, checkIfUserExistsInDb, comparePasswords } = require('./helpers')
 
 router.get('/signup', (request, response) => {
@@ -32,17 +32,18 @@ router.post('/login', (request, response) => {
   const { email } = request.body
   const { password: passwordAttempt } = request.body
 
-  return checkIfUserExistsInDb(email)
+  return getUserByEmail(email)
     .then((user) => {
-        if(comparePasswords(user.hashedPassword, request.body.password)) {
-          response.render('home')
-        } else {
-          response.render('error', {message: 'Wrong Username or Password'})
-        }
-      })
-    })
-
-
+      comparePasswords( passwordAttempt, user.password)
+        .then((res) => {
+          if(res) {
+            response.render('home')
+          } else {
+            response.render('error', {message: 'Wrong Username or Password'})
+          }
+        })
+    }).catch(console.error)
+})
 
 
 router.get('/error', (request, response) => {

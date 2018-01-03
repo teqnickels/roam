@@ -10,10 +10,9 @@ const register = (firstName, lastName, email, password ) => {
    return db.oneOrNone(create, [firstName, lastName, email, password])
 }
 
-const getUserEmail = (email) => {
-  console.log("CHECKING DATABASE FOR USER:", email, "FROM DB FUNCS")
+const getUserByEmail = (email) => {
   return db.oneOrNone(getUser, [email])
   .catch(console.error)
 }
 
-module.exports = { register, getUserEmail };
+module.exports = { register, getUserByEmail };

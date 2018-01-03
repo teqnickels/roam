@@ -3,7 +3,6 @@ const saltRounds = 10;
 const { getUserEmail } = require('../../models/db/authentication');
 
 const hash = (password) => {
-  console.log('HASHING PASSWORD ATTEMPT', password)
   return new Promise((resolve, reject) => {
     bcrypt.genSalt(saltRounds, (error, salt) => {
       if(error) {
@@ -35,20 +34,9 @@ const checkIfUserExistsInDb = (emailOnLoginAttempt) => {
     .catch(console.error)
   }
 
-const comparePasswords = function (passwordAttempt, passwordFromDb) {
-  console.log('COMPARING PASSWORDS', passwordFromDb, passwordAttempt)
-
-  return bcrypt.compare(passwordAttempt, passwordFromDb)
-      .then((respose) => {
-        return response
-      })
+function comparePasswords (myPlaintextPassword, hash) {
+   return bcrypt.compare(myPlaintextPassword, hash);
 }
-
-
-
-
-
-
 
 
 
