@@ -7,36 +7,31 @@ const path = require('path');
 const passport = require('passport');
 const pgSession = require('connect-pg-simple')
 const session = require('express-session');
+const { user } = require('./models/db/authentication')
 // const logger = require('morgan');
 
+
 const app = express();
-
-app.use(session({
-  store: new (pgSession(session))(),
-  secret: process.env.SESSION_SECRET,
-  resave: 'false',
-  saveUninitialized:'false',
-  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
-}));
-
 
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(express.static(path.join(__dirname, '../public')));
-
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(methodOverride('_method'));
-
 app.use('/', routes);
+app.use(require('express-session')({
+   secret: 'keyboard cat',
+   resave: false,
+   saveUninitialized: false
+ })
+);
 
-
-
-// Initialize passport
-app.use(passport.initialize());
-
-// Restore session
-app.use(passport.session());
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 // app.use((request, response) => {
 //   response.render('common/not_found');
