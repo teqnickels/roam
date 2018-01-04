@@ -9,7 +9,6 @@ const user = {
     return db.oneOrNone(create, [firstName, lastName, email, password])
   },
   getUserByEmail: (email) => {
-    console.log('PASSPORT IS RUNNING THIS')
     return db.oneOrNone(getUserWithEmail, [email])
   },
   getUserById: (id) => {

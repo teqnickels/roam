@@ -30,27 +30,24 @@ router.post('/signup', (request, response) => {
     })
   })
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), (request, response) => {
+router.post('/login', (request, response) => {
   const { email } = request.body
   const { password: passwordAttempt } = request.body
+  let session = request.session
 
-  response.redirect('/');
+  return user.getUserByEmail(email)
+    .then((user) => {
+      comparePasswords( passwordAttempt, user.password)
+        .then((res) => {
+          if(res) {
+            console.log('THIS IS THE SESSION', session)
+            response.render('home')
+          } else {
+            response.render('error', {message: 'Wrong Username or Password'})
+          }
+        })
+    }).catch(console.error)
 })
-
-  // return getUserByEmail(email)
-  //   .then((user) => {
-  //     comparePasswords( passwordAttempt, user.password)
-  //       .then((res) => {
-  //         if(res) {
-  //           console.log('THIS IS THE SESSION', session)
-  //           response.render('home')
-  //         } else {
-  //           response.render('error', {message: 'Wrong Username or Password'})
-  //         }
-  //       })
-  //   }).catch(console.error)
-
-// })
 
 
 router.get('/error', (request, response) => {
