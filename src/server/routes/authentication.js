@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const { register, getUserByEmail } = require('../../models/db/authentication');
+// const { register, getUserByEmail } = require('../../models/db/authentication');
+const { user } = require('../../models/db/authentication');
+const passport = require('passport');
 const { hash, checkIfUserExistsInDb, comparePasswords } = require('./helpers')
 
 router.get('/signup', (request, response) => {
@@ -28,22 +30,27 @@ router.post('/signup', (request, response) => {
     })
   })
 
-router.post('/login', (request, response) => {
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }), (request, response) => {
   const { email } = request.body
   const { password: passwordAttempt } = request.body
 
-  return getUserByEmail(email)
-    .then((user) => {
-      comparePasswords( passwordAttempt, user.password)
-        .then((res) => {
-          if(res) {
-            response.render('home')
-          } else {
-            response.render('error', {message: 'Wrong Username or Password'})
-          }
-        })
-    }).catch(console.error)
+  response.redirect('/');
 })
+
+  // return getUserByEmail(email)
+  //   .then((user) => {
+  //     comparePasswords( passwordAttempt, user.password)
+  //       .then((res) => {
+  //         if(res) {
+  //           console.log('THIS IS THE SESSION', session)
+  //           response.render('home')
+  //         } else {
+  //           response.render('error', {message: 'Wrong Username or Password'})
+  //         }
+  //       })
+  //   }).catch(console.error)
+
+// })
 
 
 router.get('/error', (request, response) => {

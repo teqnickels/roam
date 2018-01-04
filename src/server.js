@@ -7,9 +7,24 @@ const path = require('path');
 const passport = require('passport');
 const pgSession = require('connect-pg-simple')
 const session = require('express-session');
+const { user } = require('./models/db/authentication')
+const LocalStrategy = require('passport-local').Strategy;
 // const logger = require('morgan');
 
-const app = express();
+passport.use(new LocalStrategy({
+  usernameField: 'email'
+},
+  function(username, password, done) {
+    user.getUserByEmail(username, function(err, user) {
+      if (err) { return done(err); }
+      if (!user) { return done(null, false); }
+      if (user.password != password) {
+        return done(null, false);
+      }
+      return done(null, user);
+    });
+  }
+));
 
 app.use(session({
   store: new (pgSession(session))(),
@@ -23,11 +38,8 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(express.static(path.join(__dirname, '../public')));
-
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(methodOverride('_method'));
-
 app.use('/', routes);
 
 
