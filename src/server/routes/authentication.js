@@ -1,5 +1,4 @@
 const router = require('express').Router();
-// const { register, getUserByEmail } = require('../../models/db/authentication');
 const { user } = require('../../models/db/authentication');
 const passport = require('passport');
 const { hash, checkIfUserExistsInDb, comparePasswords } = require('./helpers')
@@ -33,20 +32,33 @@ router.post('/signup', (request, response) => {
 router.post('/login', (request, response) => {
   const { email } = request.body
   const { password: passwordAttempt } = request.body
-  let session = request.session
 
   return user.getUserByEmail(email)
     .then((user) => {
-      comparePasswords( passwordAttempt, user.password)
+      console.log(user)
+      const id = user.id
+      const firstName = user.first_name
+      console.log('this is the users id', id)
+      comparePasswords(passwordAttempt, user.password)
         .then((res) => {
           if(res) {
-            console.log('THIS IS THE SESSION', session)
-            response.render('home')
+            request.session.id = id
+            response.render('profile'
+            // {
+            //   userFirstName: user.firstName,
+            //   userCity : user.city,
+            //   userJoinDate: user.joinDate
+            // }
+          )
           } else {
-            response.render('error', {message: 'Wrong Username or Password'})
+            response.render('error', { message: 'Wrong Username or Password'})
           }
-        })
+        }).catch(console.error)
     }).catch(console.error)
+})
+
+router.get('/profile', (request, response) => {
+  response.render('profile')
 })
 
 
