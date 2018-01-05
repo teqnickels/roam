@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const privacyPolicy = require('../privacy-policy')
-const termsOfService = require('../terms-of-service')
-const authentication = require('../authentication')
+const privacyPolicy = require('./privacy-policy')
+const termsOfService = require('./terms-of-service')
+const authentication = require('./authentication')
 
 router.get('/', (request, response) => {
   response.render('home')
