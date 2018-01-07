@@ -18,13 +18,10 @@ router.post('/signup', (request, response) => {
   return checkIfUserExistsInDb(email)
     .then((results) => {
       if(results) {
-        console.log('GOT RESULTS, BACK IN ROUTES')
         response.render('error', {message: 'This User Already Exists'})
       } else {
-        console.log('BACK IN ROUTES, NO MATCH, WILL CREATE')
         hash(password)
         .then((encryptedPassword) => {
-          console.log('ABOUT TO REGISTER USER')
           user.register(firstName, lastName, email, city, encryptedPassword)
           .then((result) => {
             response.redirect('/')
@@ -43,11 +40,11 @@ router.post('/login', (request, response) => {
       console.log(user)
       const id = user.id
       const firstName = user.first_name
-      console.log('this is the users id', id)
       comparePasswords(passwordAttempt, user.password)
         .then((res) => {
           if(res) {
             request.session.id = id
+            console.log('SESSION ID',request.session.id)
             response.render('profile'
             // {
             //   userFirstName: user.firstName,
@@ -61,11 +58,6 @@ router.post('/login', (request, response) => {
         }).catch(console.error)
     }).catch(console.error)
 })
-
-router.get('/profile', (request, response) => {
-  response.render('profile')
-})
-
 
 router.get('/error', (request, response) => {
   response.render('error', {message: null})

@@ -1,0 +1,17 @@
+<% include partials/header %>
+
+<h1>
+  Hello,
+  <% if(name) { %>
+     <%= name %>
+     <% } %>
+</h1>
+
+<p>
+  Member since:
+  <% if(member_since) { %>
+     <%= member_since %>
+     <% } %>
+</p>
+
+<% include partials/footer %>

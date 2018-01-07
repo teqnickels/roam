@@ -2,6 +2,7 @@ const router = require('express').Router();
 const privacyPolicy = require('./privacy-policy')
 const termsOfService = require('./terms-of-service')
 const authentication = require('./authentication')
+const user = require('./users')
 
 router.get('/', (request, response) => {
   response.render('home')
@@ -12,6 +13,7 @@ router.get('/post', (request, response) => {
 })
 
 router.use('/', authentication)
+router.use('/', user)
 router.use('/privacy-policy', privacyPolicy)
 router.use('/terms-of-service',termsOfService)
 
