@@ -99,6 +99,30 @@ __A user should be able to:__
 - [ ] See post content truncated to 1000 characters max, with a link to view more on a city's page.
 - [ ] See a relative published date, e.g. "2 days ago" on a city's page.
 
+## Sprint 2: Travel Tip CRUD
+__A user should be able to:__
+- [ ] Put at least 2 cities data in your database (make sure to include Oakland!)
+- [ ] View the "Oakland" city page (at "/cities/1").
+- [ ] See the site-wide header on the city page.
+- [ ] See the name of the city on the city page.
+- [ ] See an iconic photo of the city on the city page.
+- [ ] View a list of posts on the Oakland page.
+- [ ] See posts on city page sorted by newest first.
+- [ ] Click on post titles to go to the individual post "show" pages.
+- [ ] Use an "Add New Post" button on the Oakland city page to pull up the new post form.
+- [ ] Create a new post for Oakland
+- [ ] Click "Edit" on ANY individual post, and be redirected to the edit form.
+- [ ] Click "delete" on ANY individual post.
+- [ ] See a pop-up that says: "Are you sure you want to delete ?" when clicking "delete"
+- [ ] Have the post deleted when confirming the pop-up.
+
+__Stretch__
+A user should be able to:
+Visit city pages via pretty urls, like "/cities/san-francisco".
+Visit user profile pages via pretty urls, like "/users/james".
+See post content truncated to 1000 characters max, with a link to view more on a city's page.
+See a relative published date, e.g. "2 days ago" on a city's page.
+
 ## Sprint 3: Validations & Authorization
 
 __A user should be able to:__
