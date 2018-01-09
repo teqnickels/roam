@@ -18,7 +18,7 @@
   <% if(collection) { %>
     <ul>
         <% collection.forEach(function(blog) { %>
-            <a href="/posts/`${blog.id}`"><li><%= blog.title %></li></a>
+            <a href="/profile/<%= user_id %>/<%= blog.id %>"><li><%= blog.title %></li></a>
         <% }); %>
     </ul>
      <% } %>

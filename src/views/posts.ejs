@@ -1,8 +1,17 @@
 <% include partials/header %>
+
+  <p class="blog">
+    <% if(post) { %>
+      <%= post.title %>
+      <%= post.blog %>
+      <% } %>
+  </p>
+
   <form action="/post" method="get">
     <input name="title" placeholder="Title">
     <br>
     <br>
     <textarea name="blog" cols="100" rows="20" placeholder="ENTER THINGS"> </textarea>
   </form>
+
 <% include partials/footer %>
