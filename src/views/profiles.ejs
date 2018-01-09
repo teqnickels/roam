@@ -14,4 +14,16 @@
      <% } %>
 </p>
 
+<p>
+  <% if(collection) { %>
+    <ul>
+        <% collection.forEach(function(blog) { %>
+            <a href="/posts/`${blog.id}`"><li><%= blog.title %></li></a>
+        <% }); %>
+    </ul>
+     <% } %>
+</p>
+
+
+
 <% include partials/footer %>
