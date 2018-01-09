@@ -18,7 +18,10 @@ const user = {
     return db.any(sql, [id])
   },
   getPostById: (id) => {
-    const sql = `SELECT * FROM posts WHERE id = $1`
+    const sql = `SELECT posts.title, posts.blog, users.first_name, users.last_name
+    FROM posts
+    RIGHT JOIN users ON users.id=posts.user_id
+    WHERE posts.id = $1`
     return db.oneOrNone(sql, [id])
   }
 }

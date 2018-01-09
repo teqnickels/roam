@@ -2,8 +2,14 @@
 
   <p class="blog">
     <% if(post) { %>
-      <%= post.title %>
+      <h1><%= post.title %></h1>
+      <br>
+      <h4><%= post.first_name %> <%= post.last_name %></h4>
+      <br>
+      <br>
+      <section>
       <%= post.blog %>
+      </section>
       <% } %>
   </p>
 
