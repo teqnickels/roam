@@ -1,6 +1,13 @@
 const router = require('express').Router();
+const { user } = require('../../models/db/authentication')
 
-router.get('/posts', (request, response) => {
-  response.render('posts')
-})
+router.get('/:user_id/:blog_id', (request, response) => {
+  const blogId = request.params.blog_id
+   user.getPostById(blogId)
+    .then((post) => {
+      response.render('posts', { post: post })
+    })
+    .catch(console.error)
+});
+
 module.exports = router;

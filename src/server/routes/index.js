@@ -15,7 +15,7 @@ router.get('/post', (request, response) => {
 
 router.use('/', authentication)
 router.use('/', user)
-router.use('/', posts)
+router.use('/profile', posts)
 router.use('/privacy-policy', privacyPolicy)
 router.use('/terms-of-service',termsOfService)
 

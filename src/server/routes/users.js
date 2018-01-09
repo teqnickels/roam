@@ -25,15 +25,12 @@ router.get('/profiles/:id', (request, response) => {
       response.render('profiles', {
         name: result[0].first_name,
         member_since: result[0].join_date,
-        collection: collection
+        collection: collection,
+        user_id: result[0].id
        })
     }).catch(console.error)
 })
 
-
-
-// titles: [ {id:1, title:'The Learners Guild'},{id: 2, title:'Homeroom'}, {id:3, title:'Buttercup'} ...]
-// titles[i].id , titles[i].title
 
 
 module.exports =router;
