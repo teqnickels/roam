@@ -1,13 +1,11 @@
 <div class="nav">
-  <button class="nav-link signup-button">Sign Up</a>
   <button class="nav-link login-button">Log In</a>
 </div>
 
-<!-- LOGIN Modal -->
+<!--LOGIN Modal -->
 <div class="login-modal">
-  <!-- Modal content -->
-
-  <div class="modal-content">
+<!-- Modal content -->
+<div class="modal-content">
     <span class="close">&times;</span>
     <form action="/login" method="POST">
       <input type="text" placeholder="email" name="email" required/>
@@ -19,31 +17,6 @@
       <button>Submit</button>
     </form>
   </div>
-</div>
 
-<!-- SIGNUP Modal -->
-<div class="signup-modal">
-
-  <!-- Modal content -->
-  <div class="signup-modal-content">
-    <span class="close-signup-modal">&times;</span>
-    <form action="/signup" method="POST">
-      <input type="text" placeholder="First Name" name="first_name" required/>
-      <br>
-      <br>
-      <input type="text" placeholder="Last Name" name="last_name" required/>
-      <br>
-      <br>
-      <input type="text" placeholder="Email" name="email" required/>
-      <br>
-      <br>
-      <input type="text" placeholder="City" name="city" required/>
-      <br>
-      <br>
-      <input type="password" placeholder="passowrd" name="password" required/>
-      <br>
-      <br>
-      <button>Submit</button>
-    </form>
-  </div>
+  <p>Don't have an account yet? <a href="splash.ejs">Sign Up Here</a></p>
 </div>

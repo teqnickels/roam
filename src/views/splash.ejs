@@ -1,0 +1,47 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+<!--<div class="container">-->
+  <!-- Slideshow container -->
+  <div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <img class="slide-image" src="/images/image4.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img class="slide-image" src="/images/image7.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides fade">
+      <img class="slide-image" src="/images/image010.jpg" style="width:100%">
+    </div>
+
+    <div class ="words">
+      <p>
+        Lorem ipsum dolor amet affogato thundercats stumptown meditation yr, tilde truffaut photo booth seitan. XOXO yuccie paleo, umami skateboard chambray cliche occupy. Wolf moon truffaut enamel pin PBR.
+      </p>
+    </div>
+  </div>
+</div>
+
+<form action="/signup" method="POST">
+      <input type="text" placeholder="First Name" name="first_name" required/>
+      <br>
+      <br>
+      <input type="text" placeholder="Last Name" name="last_name" required/>
+      <br>
+      <br>
+      <input type="text" placeholder="Email" name="email" required/>
+      <br>
+      <br>
+      <input type="text" placeholder="City" name="city" required/>
+      <br>
+      <br>
+      <input type="password" placeholder="passowrd" name="password" required/>
+      <br>
+      <br>
+      <button>Submit</button>
+    </form>
+<% include partials/footer %>

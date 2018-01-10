@@ -5,11 +5,19 @@ const authentication = require('./authentication')
 const user = require('./users')
 const posts = require('./posts')
 
+router.get('/splash', (request, response) => {
+  response.render('splash')
+})
+
+
 router.get('/', (request, response) => {
+  //DO NOT RENDER UNLESS THERE IS AN AUTHENTICATED USER
+  console.log(request.session.id)
   response.render('home')
 })
 
 router.get('/post', (request, response) => {
+  //DO NOT RENDER UNLESS THERE IS AN AUTHENTICATED USER
   response.render('post')
 })
 

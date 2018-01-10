@@ -31,6 +31,10 @@ router.post('/signup', (request, response) => {
     })
   })
 
+router.get('/login', (request, response) => {
+  response.render('login')
+})
+
 router.post('/login', (request, response) => {
   const { email } = request.body
   const { password: passwordAttempt } = request.body
@@ -45,13 +49,7 @@ router.post('/login', (request, response) => {
           if(res) {
             request.session.id = id
             console.log('SESSION ID',request.session.id)
-            response.render('profile'
-            // {
-            //   userFirstName: user.firstName,
-            //   userCity : user.city,
-            //   userJoinDate: user.joinDate
-            // }
-          )
+            response.redirect('/profiles/'+id)
           } else {
             response.render('error', { message: 'Wrong Username or Password'})
           }

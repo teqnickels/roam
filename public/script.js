@@ -1,8 +1,7 @@
 (function(){
-
 //LOGIN MODAL
-  const loginButton = document.querySelector(".login-button")
   const signupButton = document.querySelector(".signup-button")
+  const loginButton = document.querySelector(".login-button")
 
   const loginModal = document.querySelector('.login-modal');
   const signupModal = document.querySelector('.signup-modal');
@@ -18,7 +17,7 @@
     return signupModal.style.display = "block";
   }
 
-  const hideModal = function() {
+  const hideLoginModal = function() {
     return loginModal.style.display = "none";
   }
 
@@ -36,10 +35,10 @@
   }
 
   loginButton.addEventListener("click", displayLoginModal);
-  signupButton.addEventListener("click", displaySignUpModal);
+  // signupButton.addEventListener("click", displaySignUpModal);
 
-  close.addEventListener('click', hideModal)
-  closeSignUpModal.addEventListener('click', hideSignUpModal)
+  close.addEventListener('click', hideLoginModal)
+  // closeSignUpModal.addEventListener('click', hideSignUpModal)
   window.addEventListener('click', clickAnywhereClose)
 
 //END OF MODAL
