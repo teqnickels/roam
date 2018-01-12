@@ -5,17 +5,23 @@ const routes = require('./server/routes');
 const methodOverride = require('method-override');
 const path = require('path');
 const session = require('express-session');
-const { user } = require('./models/db/authentication')
+// const { user } = require('./models/db/authentication');
 // const logger = require('morgan');
 
 
 const app = express();
+const newLocal = require('connect-pg-simple');
 
 app.use(session({
+  store: new (newLocal(session))(),
   secret: process.env.SESSION_SECRET,
+  saveUnitialized: false,
   resave: false,
-  saveUninitialized: false,
-}))
+  cookie: {
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+  }, // 30 days
+}));
+
 
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
