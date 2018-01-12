@@ -7,8 +7,8 @@ const posts = require('./posts');
 
 router.get('/splash', (request, response) => {
   response.render('splash');
+  console.log('IS THERE A SESSION? ', request.session.name)
 });
-
 
 router.get('/', (request, response) => {
   // DO NOT RENDER UNLESS THERE IS AN AUTHENTICATED USER

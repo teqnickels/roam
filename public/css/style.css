@@ -101,6 +101,15 @@ body {
   width: 15px;
 }
 
+.logout-button-hidden {
+  display: none; 
+}
+
+.logout-button {
+  display: inline;
+}
+
+
 /*  MODAL */
 .login-modal {
     display: none;
