@@ -5,6 +5,8 @@ const routes = require('./server/routes');
 const methodOverride = require('method-override');
 const path = require('path');
 const session = require('express-session');
+const middlewares = require('./server/middlewares');
+
 // const { user } = require('./models/db/authentication');
 // const logger = require('morgan');
 
@@ -22,10 +24,19 @@ app.use(session({
   }, // 30 days
 }));
 
+// app.use((request, response, next) => {
+//   if (request.session) {
+//     console.log("This Is The Session", request.session)
+//     next()
+//   } else {
+//     console.log("YOU ARE NOT LOGGED IN")
+//   }
+// })
 
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(express.static(path.join(__dirname, '../public')));
+app.use(middlewares.setDefaultResponseLocals)
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use('/', routes);
