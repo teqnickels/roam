@@ -1,45 +1,24 @@
-(function(){
-//LOGIN MODAL
-  const signupButton = document.querySelector(".signup-button")
-  const loginButton = document.querySelector(".login-button")
-
+(function () {
+  const loginButton = document.querySelector('.login-button');
   const loginModal = document.querySelector('.login-modal');
-  const signupModal = document.querySelector('.signup-modal');
+  const close = document.querySelector('.close');
 
-  const close = document.querySelector(".close");
-  const closeSignUpModal = document.querySelector(".close-signup-modal")
+  const displayLoginModal = function () {
+    return loginModal.style.display = 'block';
+  };
 
-  const displayLoginModal = function() {
-    return loginModal.style.display = "block";
-  }
+  const hideLoginModal = function () {
+    return loginModal.style.display = 'none';
+  };
 
-  const displaySignUpModal = function() {
-    return signupModal.style.display = "block";
-  }
-
-  const hideLoginModal = function() {
-    return loginModal.style.display = "none";
-  }
-
-  const hideSignUpModal = function() {
-    return signupModal.style.display = "none"
-  }
-
-  const clickAnywhereClose = function(event) {
+  const clickAnywhereClose = function (event) {
     if (event.target == loginModal) {
-      return loginModal.style.display = "none";
+      return loginModal.style.display = 'none';
     }
-    if (event.target == signupModal) {
-      return signupModal.style.display = "none";
-    }
-  }
+  };
 
-  loginButton.addEventListener("click", displayLoginModal);
-  // signupButton.addEventListener("click", displaySignUpModal);
+  loginButton.addEventListener('click', displayLoginModal);
 
-  close.addEventListener('click', hideLoginModal)
-  // closeSignUpModal.addEventListener('click', hideSignUpModal)
-  window.addEventListener('click', clickAnywhereClose)
-
-//END OF MODAL
-})();
+  close.addEventListener('click', hideLoginModal);
+  window.addEventListener('click', clickAnywhereClose);
+}());

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon src/server.js",
-    "load_schema": "psql roam < src/models/db/schema/schema.sql"
+    "load_schema": "psql roam < src/models/db/schema/schema.sql",
+    "load_users": "psql roam < src/models/db/schema/seedUsers.sql",
+    "load_posts": "psql roam < src/models/db/schema/seedPosts.sql"
   },
   "repository": {
     "type": "git",
@@ -21,11 +23,6 @@
   "homepage": "https://github.com/teqnickels/roam#readme",
   "devDependencies": {
     "ajv": "^5.2.2",
-    "eslint": "^4.12.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.5.1",
     "nodemon": "^1.12.5"
   },
   "dependencies": {
