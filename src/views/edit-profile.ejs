@@ -1,0 +1,13 @@
+<% include partials/header %>
+  <% include partials/nav %>
+
+  <a href="edit-profile/<%= user_id %>" <button class="edit-profile">Edit Profile</button></a>
+  <button class="save-profile">Save</button>
+  <form>
+    <input type="text" name="first_name" value="<%= first_name %>"> <br>
+    <input type="text" name="last_name" value="<%= last_name %>"> <br>
+    <input type="text" name="email" value="<%= email %>"> <br>
+    <input type="text" name="city" value="<%= city %>"> <br>
+  </form>
+
+<% include partials/footer %>

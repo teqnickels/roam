@@ -12,7 +12,7 @@ const user = {
   getUserById: (id) => {
     console.log('Getting User By Id in DB Functions ')
     const sql = `
-    SELECT posts.title, posts.id, users.id, users.first_name, users.join_date
+    SELECT posts.title, posts.id, users.id, users.first_name, users.last_name, users.email, users.city, users.join_date
     FROM posts
     RIGHT JOIN users ON users.id=posts.user_id
     WHERE users.id = $1`;

@@ -32,15 +32,11 @@ router.post('/signup', (request, response) => {
 // })
 
 router.post('/login', (request, response) => {
-  console.log('HITTING LOGIN ROUTE')
   const { email } = request.body;
   const { password: passwordAttempt } = request.body;
 
   return user.getUserByEmail(email)
     .then((result) => {
-
-      console.log('RESULT AFTER GETUSERBYEMAIL()', result)
-
       const id = result.id;
       const firstName = result.first_name;
 
@@ -49,8 +45,8 @@ router.post('/login', (request, response) => {
           if (res) {
             request.session.name = firstName;
 
-            console.log('Just added stuff to the session', request.session.name)
-            console.log('SESSION ID', request.session.id);
+            console.log('**********Just added stuff to the session', request.session.name)
+            console.log('**********SESSION ID', request.session.id);
 
             response.redirect(`/profiles/${id}`);
           } else {
@@ -61,8 +57,6 @@ router.post('/login', (request, response) => {
 });
 
 router.get('/logout', (request, response) => {
-  console.log('HITTING LOGOUT ROUTE')
-  // console.log('Here the session go:', request.session)
   let session = request.session
   if (request.session.name) {
     session
