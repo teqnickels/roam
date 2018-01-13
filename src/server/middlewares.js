@@ -17,9 +17,9 @@ const notFoundHandler = (request, response) => {
 };
 
 const setDefaultResponseLocals = (request, response, next) => {
-  response.locals.query = ''
-  if (request.session.email) {
-    response.locals.session = true
+  if (request.session.name) {
+    response.locals.session = true 
+    response.locals.moment = require('moment')
   } else {
     response.locals.session = false
   }
@@ -27,12 +27,15 @@ const setDefaultResponseLocals = (request, response, next) => {
 };
 
 const restrictToLoggedInUsers = (request, response, next) => {
-  if (request.session.email) {
+
+  // console.log(request.session)
+  
+  let session = request.session  
+  if (request.session.name) {
     next();
   } else {
-    response.redirect('/login');
+    response.redirect('/splash');
   }
-
 }
 
 module.exports = {

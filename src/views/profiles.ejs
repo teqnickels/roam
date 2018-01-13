@@ -1,6 +1,7 @@
 <% include partials/header %>
 <% include partials/nav %>
 
+<a href="edit-profile/<%= user_id %>"<button class="edit-profile">Edit Profile</button></a>
 <h1>
   Hello,
   <% if(name) { %>
@@ -11,7 +12,7 @@
 <p>
   Member since:
   <% if(member_since) { %>
-     <%= member_since %>
+     <%= moment(member_since).format('MMMM YYYY') %>
      <% } %>
 </p>
 
