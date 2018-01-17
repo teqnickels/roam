@@ -38,6 +38,7 @@ app.set('views', `${__dirname}/views`);
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(middlewares.setDefaultResponseLocals)
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 app.use('/', routes);
 

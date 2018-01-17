@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { user } = require('../../models/db/authentication');
+const { user, profiles } = require('../../models/db/authentication');
 
 router.get('/profiles/:id', (request, response) => {
   const id = request.params.id
@@ -21,21 +21,26 @@ router.get('/profiles/:id', (request, response) => {
     }).catch(console.error);
 });
 
-router.get('/profiles/edit-profile/:id', (request, response) => { 
+router.get('/profiles/:id/edit-profile/', (request, response) => {
   const id = request.params.id
-  return user
-    .getUserById(id)
+  const originalObject = {};
+  return profiles.getSingleUserById(id)
     .then((result) => {
-      console.log('FROM THE EDIT PROFILE ROUTE', result[0])
-      response.render('edit-profile', {
-        first_name: result[0].first_name,
-        last_name: result[0].last_name,
-        email: result[0].email,
-        member_since: result[0].join_date,
-        user_id: result[0].id, 
-        city: result[0].city
+      // const orginalUserProfile = { first_name:result.first_name, last_name:result.last_name, email:result.email, city:result.city, user_id:result.id}
+      response.render('edit-profile', { 
+        first_name: result.first_name,
+        last_name: result.last_name,
+        email: result.email,
+        member_since: result.join_date,
+        user_id: result.id, 
+        city: result.city
       })
     }).catch(console.error)
 });
+
+router.put('/save-updated-profile', (request, response) => {
+  console.log('SAVE ROUTE BEING CALLED')
+  console.log('FROM THE CLIENT', request.body)
+  })
 
 module.exports = router;
