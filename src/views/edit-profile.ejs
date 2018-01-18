@@ -1,13 +1,17 @@
 <% include partials/header %>
   <% include partials/nav %>
 
-  <a href="edit-profile/<%= user_id %>" <button class="edit-profile">Edit Profile</button></a>
-  <button class="save-profile">Save</button>
-  <form>
-    <input type="text" name="first_name" value="<%= first_name %>"> <br>
-    <input type="text" name="last_name" value="<%= last_name %>"> <br>
-    <input type="text" name="email" value="<%= email %>"> <br>
-    <input type="text" name="city" value="<%= city %>"> <br>
+  
+  <form class="edit-profile">  
+    <button class="save-profile-button" type="submit">Save</button> <br>
+
+    <input class="update-profile-field first-name-input" type="text" name="first_name" value="<%= first_name %>" data-user-id="<%= user_id %>"><br>
+    <input class="update-profile-field last-name-input" type="text" name="last_name" value="<%= last_name %>" data-user-id="
+    <%= user_id %>"><br>
+    <input class="update-profile-field email-input" type="text" name="email" value="<%= email %>" data-user-id="
+    <%= user_id %>"><br>
+    <input class="update-profile-field city-input" type="text" name="city" value="<%= city %>" data-user-id="
+    <%= user_id %>"><br>
   </form>
 
-<% include partials/footer %>
+<% include partials/footer %> 

@@ -36,19 +36,22 @@ router.post('/login', (request, response) => {
   const { password: passwordAttempt } = request.body;
 
   return user.getUserByEmail(email)
-    .then((result) => {
-      const id = result.id;
-      const firstName = result.first_name;
+    .then((userObject) => {
+      const id = userObject.id;
+      const firstName = userObject.first_name;
+      const lastName = userObject.last_name;
+      const email = userObject.email;
 
-      comparePasswords(passwordAttempt, result.password)
+      const thisUser = { id, firstName, lastName, email};
+
+      comparePasswords(passwordAttempt, userObject.password)
         .then((res) => {
           if (res) {
-            request.session.name = firstName;
+            request.session.user = thisUser;
 
-            console.log('**********Just added stuff to the session', request.session.name)
-            console.log('**********SESSION ID', request.session.id);
+            console.log('**********Just added stuff to the session', request.session.user)
 
-            response.redirect(`/profiles/${id}`);
+            response.redirect(`/profiles/${thisUser.id}`);
           } else {
             response.render('error', { message: 'Wrong Username or Password' });
           }
@@ -58,9 +61,8 @@ router.post('/login', (request, response) => {
 
 router.get('/logout', (request, response) => {
   let session = request.session
-  if (request.session.name) {
-    session
-      .destroy((err) => {
+  if (request.session.user) {
+    session.destroy((err) => {
         response.redirect('/splash')
         // console.log('THE SESSION WILL BE DESTROYED NOW:', request.session.first_name)
     })

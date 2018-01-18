@@ -9,8 +9,8 @@ const user = {
     const sql = 'SELECT * FROM users WHERE email = $1';
     return db.oneOrNone(sql, [email]).catch(console.error);
   },
+  //change this to getAllUserPostsByUserId
   getUserById: (id) => {
-    console.log('Getting User By Id in DB Functions ')
     const sql = `
     SELECT posts.title, posts.id, users.id, users.first_name, users.last_name, users.email, users.city, users.join_date
     FROM posts
@@ -18,6 +18,7 @@ const user = {
     WHERE users.id = $1`;
     return db.any(sql, [id]);
   },
+  //change this to getSinglePostById
   getPostById: (id) => {
     const sql = `SELECT posts.title, posts.blog, users.first_name, users.last_name
     FROM posts
@@ -27,5 +28,15 @@ const user = {
   },
 };
 
+const profiles = { 
+  updateUser: (firstName, lastName, email, city, id) => {
+    const sql = 'UPDATE users SET first_name=$1, last_name=$2, email=$3, city=$4 WHERE id=$5'
+    return db.none(sql, [firstName, lastName, email, city, id])
+  }, 
+  getSingleUserById: (id) => {
+    const sql = 'SELECT * FROM users WHERE id=$1'
+    return db.oneOrNone(sql, [id])
+  }
+}
 
-module.exports = { user };
+module.exports = { user, profiles };

@@ -8,7 +8,7 @@ const middlewares = require('../middlewares')
 
 router.get('/splash', (request, response) => {
   response.render('splash');
-  console.log('IS THERE A SESSION? ', request.session.name)
+  console.log('IS THERE A SESSION? ', request.session)
 });
 
 
