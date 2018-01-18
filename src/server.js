@@ -24,15 +24,6 @@ app.use(session({
   }, // 30 days
 }));
 
-// app.use((request, response, next) => {
-//   if (request.session) {
-//     console.log("This Is The Session", request.session)
-//     next()
-//   } else {
-//     console.log("YOU ARE NOT LOGGED IN")
-//   }
-// })
-
 app.set('view engine', 'ejs');
 app.set('views', `${__dirname}/views`);
 app.use(express.static(path.join(__dirname, '../public')));

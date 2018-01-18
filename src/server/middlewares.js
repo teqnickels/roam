@@ -17,7 +17,8 @@ const notFoundHandler = (request, response) => {
 };
 
 const setDefaultResponseLocals = (request, response, next) => {
-  if (request.session.name) {
+
+  if (request.session.user) {
     response.locals.session = true 
     response.locals.moment = require('moment')
   } else {
@@ -26,12 +27,8 @@ const setDefaultResponseLocals = (request, response, next) => {
   next()
 };
 
-const restrictToLoggedInUsers = (request, response, next) => {
-
-  // console.log(request.session)
-  
-  let session = request.session  
-  if (request.session.name) {
+const restrictToLoggedInUsers = (request, response, next) => {  
+  if (request.session.user) {
     next();
   } else {
     response.redirect('/splash');

@@ -29,12 +29,11 @@ const user = {
 };
 
 const profiles = { 
-  updateUser: (firstName) => {
-    const sql = 'UPDATE users SET first_name=$1, last_name=$2, email=$3 WHERE id=$2'
-    return db.none(sql, [id, firstName] )
+  updateUser: (firstName, lastName, email, city, id) => {
+    const sql = 'UPDATE users SET first_name=$1, last_name=$2, email=$3, city=$4 WHERE id=$5'
+    return db.none(sql, [firstName, lastName, email, city, id])
   }, 
   getSingleUserById: (id) => {
-    console.log('Getting User By Id in DB Functions')
     const sql = 'SELECT * FROM users WHERE id=$1'
     return db.oneOrNone(sql, [id])
   }

@@ -17,32 +17,29 @@
     }
   };
 
-  // loginButton.addEventListener('click', displayLoginModal);
+  if(loginButton) {
+    loginButton.addEventListener('click', displayLoginModal);
+  }
 
-  // close.addEventListener('click', hideLoginModal);
+  if(close) {
+    close.addEventListener('click', hideLoginModal);
+  }
   window.addEventListener('click', clickAnywhereClose);
   
 //UPDATE PROFILE
+const updateProfileForm = document.querySelector('.edit-profile')
 const updateProfileSaveButton = document.querySelector('.save-profile-button')
 
-// const inputs = document.getElementsByClassName('update-profile-field').value
-// inputs.oninput = function () {
-//   console.log(event.target)
-// };
-
-
 const getChangesFromFields = function(event) {
-  console.log('GET CHANGES BEING CALLED')
   event.preventDefault()
   const updatedFields = document.querySelectorAll('.update-profile-field');
-  console.log('THESE ARE UPDATE FIELDS',updatedFields)
   const firstName = document.querySelector('.first-name-input').value
+  const firstNameElement = document.querySelector('.first-name-input')
+  const id = firstNameElement.getAttribute('data-user-id')
   const lastName = document.querySelector('.last-name-input').value
   const email = document.querySelector('.email-input').value
   const city = document.querySelector('.city-input').value
-  let updates = { firstName, lastName, email, city }
-
-  console.log('THIS IS UPDATES OBJECT---->', updates)
+  let updates = { firstName, lastName, email, city, id }
 
   const url = '/save-updated-profile' 
     fetch(url, {
@@ -53,9 +50,17 @@ const getChangesFromFields = function(event) {
       body: JSON.stringify(updates)
       })
       .then(function(response){
-        return response.json
+        return response.json()
+      }).then(function(response) {
+        if(response.redirect) {
+          window.location.pathname = response.redirect
+        }
+        if(response.error) {
+          updateProfileForm.innerHTML(response.error)
+        }
       })
 }
-
-updateProfileSaveButton.addEventListener('click', getChangesFromFields)
+if(updateProfileSaveButton) {
+  updateProfileSaveButton.addEventListener('click', getChangesFromFields)
+}
 // }());
