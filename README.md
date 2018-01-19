@@ -2,12 +2,11 @@
  A travel community, code-named Roam for now, for users to share tips about their favorite locations around the world.
 
 __INSTRUCTIONS__
-_order matters:_
-- npm install
-- npm run load_schema
-- npm run load_users
-- npm run load_cities
-- npm run load_posts
+__NOTE:__ If you have a database entitled `roam` on your system, it will be deleted by this setup. 
+
+- `npm run setup`
+- Set up a `.env` file at the top level, following `.env.template`
+- `npm run start` or `npm run start:dev`
 
 ## Description
 
