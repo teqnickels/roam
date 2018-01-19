@@ -2,6 +2,7 @@
  A travel community, code-named Roam for now, for users to share tips about their favorite locations around the world.
 
 __INSTRUCTIONS__
+_order matters:_
 - npm install
 - npm run load_schema
 - npm run load_users
