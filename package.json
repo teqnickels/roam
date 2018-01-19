@@ -4,11 +4,14 @@
   "description": "A travel community, code-named Roam for now, for users to share tips about their favorite locations around the world.",
   "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "nodemon src/server.js",
-    "load_schema": "psql roam < src/models/db/schema/schema.sql",
-    "load_users": "psql roam < src/models/db/schema/seedUsers.sql",
-    "load_posts": "psql roam < src/models/db/schema/seedPosts.sql"
+    "db:load_schema": "psql < src/models/db/schema/schema.sql",
+    "db:load_users": "psql < src/models/db/schema/seedUsers.sql",
+    "db:load_posts": "psql < src/models/db/schema/seedPosts.sql",
+    "db:setup": "npm run db:load_schema && npm run db:load_users && npm run db:load_posts",
+    "setup": "npm run db:setup && npm install"
   },
   "repository": {
     "type": "git",

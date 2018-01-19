@@ -1,7 +1,7 @@
-// (function () {
+(function () {
   const loginButton = document.querySelector('.login-button');
   const loginModal = document.querySelector('.login-modal');
-  const close = document.querySelector('.close');
+  const loginModalCloseButton = document.querySelector('.close');
 
   const displayLoginModal = function () {
     return loginModal.style.display = 'block';
@@ -12,7 +12,7 @@
   };
 
   const clickAnywhereClose = function (event) {
-    if (event.target == loginModal) {
+    if (event.target === loginModal) {
       return loginModal.style.display = 'none';
     }
   };
@@ -21,17 +21,18 @@
     loginButton.addEventListener('click', displayLoginModal);
   }
 
-  if(close) {
-    close.addEventListener('click', hideLoginModal);
+  if(loginModalCloseButton) {
+    loginModalCloseButton.addEventListener('click', hideLoginModal);
   }
   window.addEventListener('click', clickAnywhereClose);
   
-//UPDATE PROFILE
+// UPDATE PROFILE
 const updateProfileForm = document.querySelector('.edit-profile')
 const updateProfileSaveButton = document.querySelector('.save-profile-button')
 
 const getChangesFromFields = function(event) {
   event.preventDefault()
+  console.log('getting changes!')
   const updatedFields = document.querySelectorAll('.update-profile-field');
   const firstName = document.querySelector('.first-name-input').value
   const firstNameElement = document.querySelector('.first-name-input')
@@ -63,4 +64,4 @@ const getChangesFromFields = function(event) {
 if(updateProfileSaveButton) {
   updateProfileSaveButton.addEventListener('click', getChangesFromFields)
 }
-// }());
+}());

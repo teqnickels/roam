@@ -6,8 +6,9 @@ const user = {
     return db.oneOrNone(sql, [firstName, lastName, email, city, password]);
   },
   getUserByEmail: (email) => {
-    const sql = 'SELECT * FROM users WHERE email = $1';
-    return db.oneOrNone(sql, [email]).catch(console.error);
+    console.log('email ================>', email)
+    const sql = 'SELECT * FROM users WHERE email ILIKE $1';
+    return db.oneOrNone(sql, [email]);
   },
   //change this to getAllUserPostsByUserId
   getUserById: (id) => {
