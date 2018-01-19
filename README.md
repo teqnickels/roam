@@ -1,7 +1,12 @@
 # Roam
  A travel community, code-named Roam for now, for users to share tips about their favorite locations around the world.
 
-
+__INSTRUCTIONS__
+- npm install
+- npm run load_schema
+- npm run load_users
+- npm run load_cities
+- npm run load_posts
 ## Description
 
 You have been commissioned to build a travel community, code-named Roam for now, for users to share tips about their favorite locations around the world.
