@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { user, profiles } = require('../../models/db/authentication');
 
-
 router.get('/profiles/:id', (request, response) => {
   const id = request.params.id
   return user.getUserById(id)
@@ -19,7 +18,7 @@ router.get('/profiles/:id', (request, response) => {
         collection,
         user_id: result[0].id,
       });
-    }).catch(console.error);
+    });
 });
 
 router.get('/profiles/:id/edit-profile/', (request, response) => {
@@ -27,7 +26,6 @@ router.get('/profiles/:id/edit-profile/', (request, response) => {
   const originalObject = {};
   return profiles.getSingleUserById(id) 
     .then((result) => {
-      // const orginalUserProfile = { first_name:result.first_name, last_name:result.last_name, email:result.email, city:result.city, user_id:result.id}
       response.render('edit-profile', { 
         first_name: result.first_name,
         last_name: result.last_name,
@@ -36,21 +34,15 @@ router.get('/profiles/:id/edit-profile/', (request, response) => {
         user_id: result.id, 
         city: result.city
       })
-    }).catch(console.error)
+    })
 });
 
 router.put('/save-updated-profile', (request, response) => {
-  const { firstName, lastName, email, city, id } = request.body
-  try {
-    return profiles.updateUser(firstName, lastName, email, city, id)
+    profiles.updateUser(request.body)
       .then((result)=> {  
-        request.session.user = { firstName, lastName, email, city, id }
-        response.json({redirect:`/profiles/${id}`})
+        request.session.user = result.first_name
+        response.json({redirect:`/profiles/${result.id}`})
     })
-  } catch(error) {
-    response.send( {error: 'Error, unable to save'} )
-  }
 })
   
-
 module.exports = router;

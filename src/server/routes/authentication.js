@@ -32,31 +32,38 @@ router.post('/signup', (request, response) => {
 // })
 
 router.post('/login', (request, response) => {
-  const { email } = request.body;
-  const { password: passwordAttempt } = request.body;
+  console.log('LOGIN ROUTE IS BEING CALLED NOW :::::')
+  const {email} = request.body;
+  const {password: passwordAttempt} = request.body;
 
-  return user.getUserByEmail(email)
+  return user
+    .getUserByEmail(email)
     .then((userObject) => {
       const id = userObject.id;
       const firstName = userObject.first_name;
       const lastName = userObject.last_name;
       const email = userObject.email;
 
-      const thisUser = { id, firstName, lastName, email};
+      const thisUser = {
+        id,
+        firstName,
+        lastName,
+        email
+      };
 
-      comparePasswords(passwordAttempt, userObject.password)
-        .then((res) => {
-          if (res) {
-            request.session.user = thisUser;
+      comparePasswords(passwordAttempt, userObject.password).then((res) => {
+        if (res) {
+          request.session.user = thisUser;
 
-            console.log('**********Just added stuff to the session', request.session.user)
+          console.log('**********Just added stuff to the session', request.session.user)
 
-            response.redirect(`/profiles/${thisUser.id}`);
-          } else {
-            response.render('error', { message: 'Wrong Username or Password' });
-          }
-        });
-    }).catch(console.error)
+          response.redirect(`/profiles/${thisUser.id}`);
+        } else {
+          response.render('error', {message: 'Wrong Username or Password'});
+        }
+      });
+    })
+    .catch(console.error)
 });
 
 router.get('/logout', (request, response) => {

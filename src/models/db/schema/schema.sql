@@ -1,4 +1,7 @@
-DROP TABLE IF EXISTS roam;
+DROP DATABASE IF EXISTS roam;
+CREATE DATABASE roam;
+
+\c roam
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
@@ -10,12 +13,19 @@ CREATE TABLE users(
   join_date TIMESTAMP NOT NULL
 );
 
+CREATE TABLE cities(
+  id SERIAL PRIMARY KEY, 
+  name VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE posts(
   id SERIAL PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   blog TEXT NOT NULL,
+  city_id INTEGER REFERENCES cities(id),
   user_id INTEGER REFERENCES users(id)
 );
+
 
 CREATE TABLE "session" (
   "sid" varchar NOT NULL COLLATE "default",

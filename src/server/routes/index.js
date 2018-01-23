@@ -11,7 +11,6 @@ router.get('/splash', (request, response) => {
   console.log('IS THERE A SESSION? ', request.session)
 });
 
-
 router.get('/', (request, response) => {
   console.log(request.session.id);
   response.render('home');
@@ -24,7 +23,7 @@ router.get('/post', (request, response) => {
 router.use('/posts', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);
 router.use('/profiles/', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);
 router.use('/', authentication);
-router.use('/', user);
+router.use('/', user );
 router.use('/profile', posts);
 router.use('/privacy-policy', privacyPolicy);
 router.use('/terms-of-service', termsOfService);

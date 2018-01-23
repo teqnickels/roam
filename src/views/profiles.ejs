@@ -17,13 +17,15 @@
 </p>
 
 <p>
-  <% if(collection) { %>
+  <% if(collection[0].title !== null) { %>
     <ul>
         <% collection.forEach(function(blog) { %>
             <a href="/profile/<%= user_id %>/<%= blog.id %>"><li><%= blog.title %></li></a>
         <% }); %>
     </ul>
-     <% } %>
+     <% } else {%>
+        <h3> You haven't added any blogs yet. Add your first blog <a href="#">here</a></h3>
+     <% } %> 
 </p>
 
 

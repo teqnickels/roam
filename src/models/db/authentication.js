@@ -7,8 +7,9 @@ const user = {
   },
   getUserByEmail: (email) => {
     const sql = 'SELECT * FROM users WHERE email = $1';
-    return db.oneOrNone(sql, [email]).catch(console.error);
+    return db.oneOrNone(sql, [email])
   },
+  
   //change this to getAllUserPostsByUserId
   getUserById: (id) => {
     const sql = `
@@ -28,11 +29,21 @@ const user = {
   },
 };
 
-const profiles = { 
-  updateUser: (firstName, lastName, email, city, id) => {
-    const sql = 'UPDATE users SET first_name=$1, last_name=$2, email=$3, city=$4 WHERE id=$5'
-    return db.none(sql, [firstName, lastName, email, city, id])
-  }, 
+const profiles = {  
+updateUser: (userUpdates) => {
+  updateFields = Object.keys(userUpdates)
+  let query = 'UPDATE users SET '
+  const fields = []
+  updateFields.forEach(field => {
+    if (field !== 'id') 
+      fields.push(`${field}=\$/${field}/`)
+      // ' first_name=$/first_name/'
+    })
+  query += fields.join(', ')
+  query += ' WHERE id=$/id/ RETURNING *'
+  return db.one(query, userUpdates)
+},
+
   getSingleUserById: (id) => {
     const sql = 'SELECT * FROM users WHERE id=$1'
     return db.oneOrNone(sql, [id])
