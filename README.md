@@ -1,6 +1,12 @@
 # Roam
  A travel community, code-named Roam for now, for users to share tips about their favorite locations around the world.
 
+__INSTRUCTIONS__
+__NOTE:__ If you have a database entitled `roam` on your system, it will be deleted by this setup. 
+
+- `npm run setup`
+- Set up a `.env` file at the top level, following `.env.template`
+- `npm run start` or `npm run start:dev`
 
 ## Description
 

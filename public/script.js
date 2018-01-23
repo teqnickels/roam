@@ -1,5 +1,4 @@
 (function () {
-  
   const buttons = {
     loginButton: document.querySelector('.login-button'),
     closeModalButton: document.querySelector('.close')
@@ -68,6 +67,7 @@ const getDirtyValues = function(updatedProfileValues) {
     userProfileChanges.first_name = updatedProfileValues.firstName
   }
 
+
   if(updatedProfileValues.lastName !== originalInputValues.lastName) {
     userProfileChanges.last_name = updatedProfileValues.lastName
   }
@@ -113,6 +113,7 @@ const getDirtyValues = function(updatedProfileValues) {
           updateProfileForm.innerHTML(response.error)
         }
       })
+
     }
- 
 })();
+

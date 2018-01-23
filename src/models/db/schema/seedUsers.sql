@@ -1,3 +1,5 @@
+\c roam
+
 INSERT INTO
   users (first_name, last_name, email,city, password, join_date)
 VALUES

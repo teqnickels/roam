@@ -1,3 +1,5 @@
+\c roam
+
 INSERT INTO
   posts (title, blog, user_id)
 VALUES
