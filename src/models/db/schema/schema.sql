@@ -5,7 +5,7 @@ CREATE DATABASE roam;
 
 CREATE TABLE users(
   id SERIAL PRIMARY KEY,
-  first_name VARCHAR(255),
+  first_name VARCHAR(255) UNIQUE,
   last_name VARCHAR(255),
   email VARCHAR(255) NOT NULL,
   city VARCHAR(255) NOT NULL,
@@ -23,7 +23,8 @@ CREATE TABLE posts(
   title VARCHAR(255) NOT NULL,
   blog TEXT NOT NULL,
   city_id INTEGER REFERENCES cities(id),
-  user_id INTEGER REFERENCES users(id)
+  user_id INTEGER REFERENCES users(id),
+  user_name VARCHAR(255) REFERENCES users(first_name)
 );
 
 

@@ -4,13 +4,15 @@ const termsOfService = require('./terms-of-service');
 const authentication = require('./authentication');
 const user = require('./users');
 const posts = require('./posts');
+const cities = require('../../models/db/home')
 const middlewares = require('../middlewares')
+const tableCreate = require('../../../')
 
 router.get('/splash', (request, response) => {
   response.render('splash');
-  console.log('IS THERE A SESSION? ', request.session)
 });
 
+// router.use(middlewares.restrictToLoggedInUsers)
 router.get('/', (request, response) => {
   console.log(request.session.id);
   response.render('home');
@@ -19,6 +21,30 @@ router.get('/', (request, response) => {
 router.get('/post', (request, response) => {
   response.render('post');
 });
+
+router.get('/cities', (request, response) => {
+  return cities.allCities()
+  .then((cities)=> {
+    response.render('cities', { cities: cities })
+  })
+  response.render('cities')
+})
+
+
+router.get('/cities/:id', (request, response) => {
+  const { id } = request.params
+  
+  return cities.city(id)
+  .then((nameOfCity) => {
+    const cityName = nameOfCity.name;
+  })
+
+  return cities.postsFromCity(id)
+  .then((postTitles)=> {
+    console.log(postTitles)
+    response.send({ titles: postTitles }) 
+  })
+})
 
 router.use('/posts', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);
 router.use('/profiles/', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);

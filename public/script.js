@@ -113,7 +113,61 @@ const getDirtyValues = function(updatedProfileValues) {
           updateProfileForm.innerHTML(response.error)
         }
       })
-
     }
+
+  //GENERATE TABLE FOR CITIES PAGE
+  // if (helpers.editProfilePath[1] === 'splash') {
+  //   const citiesDiv = document.getElementsByClassName('.cities-list')[0]
+  // }
+
+  // function tableCreate(list) {
+  //   var citiesDiv = document.getElementsByClassName('cities')[0];
+  //   var table = document.createElement('table');
+  //   table.style.width = '75%';
+  //   table.setAttribute('border', '1');
+  //   var tableBody = document.createElement('tbody');
+  //   var tr = document.createElement('tr');
+  //   list.forEach(function(city) {
+  //     var td = document.createElement('td');
+  //     tr.appendChild(td)
+  //     if(city[i] % 7 == 0) {
+  //      tr = document.createElement('tr');
+  //     }
+  //   })
+  //   tableBody.appendChild(tr);
+  //   table.appendChild(tableBody);
+  //   citiesDiv.appendChild(table)
+
+
+
+
+    // for (var i = 0; i < 7; i++) {
+    //   var tr = document.createElement('tr');
+    //   for (var j = 0; j < 2; j++) {
+    //     if (i == 2 && j == 1) {
+    //       break
+    //     } else {
+    //       var td = document.createElement('td');
+    //       td.appendChild(document.createTextNode('\u0020'))
+    //       i == 1 && j == 1
+    //         ? td.setAttribute('rowSpan', '2')
+    //         : null;
+    //       tr.appendChild(td)
+    //     }
+    //   }
+    //   tableBody.appendChild(tr);
+    // }
+    // table.appendChild(tableBody);
+    // body.appendChild(table)
+  }
+
+// create a table 
+// loop through list and for each create td
+// append td to row 
+// create a tr every seven td's in list, if 7 % indexOf(list[i]) == 0 create row
+
+// tr append tr to table append table to div every seven items, create a new tr
+// until i == list.length
+
 })();
 
