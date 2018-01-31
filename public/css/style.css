@@ -85,11 +85,10 @@ body {
   height: 200px;
   width: 100%;
 }
-/*
-.cities {
-  font-size: 72px;
-  text-align: center;
-} */
+
+table, td {
+  border: 1px solid black;
+}
 
 .footer {
   background-color: #000;

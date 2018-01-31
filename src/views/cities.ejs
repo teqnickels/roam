@@ -1,0 +1,26 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+<div class="cities">
+  <% if(cities) { %>
+    <table>
+      <tr>
+      <% for(var i = 0; i < cities.length; i++) { %>
+        <% if(cities.indexOf(cities[i]) % 7 == 0) { %>
+          </tr> 
+          <tr>
+        <% } else { %>
+          <td>
+            <h1 data-cityId="<%= cities[i].id %>">
+              <a href="/cities/<%= cities[i].id %>">
+                <%= cities[i].name%>
+              </a>
+            </h1>
+          </td>
+        <% } %>
+      <% } %>
+      </table>
+    <% } %>
+</div>
+
+<% include partials/footer %>

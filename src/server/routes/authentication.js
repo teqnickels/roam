@@ -33,6 +33,7 @@ router.post('/signup', (request, response) => {
 
 router.post('/login', (request, response) => {
   console.log('LOGIN ROUTE IS BEING CALLED NOW :::::')
+  
   const {email} = request.body;
   const {password: passwordAttempt} = request.body;
 

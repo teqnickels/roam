@@ -1,3 +1,5 @@
+\c roam
+
 INSERT INTO
   cities (name)
 VALUES
