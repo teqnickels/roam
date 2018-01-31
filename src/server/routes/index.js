@@ -27,22 +27,21 @@ router.get('/cities', (request, response) => {
   .then((cities)=> {
     response.render('cities', { cities: cities })
   })
-  response.render('cities')
 })
 
 
 router.get('/cities/:id', (request, response) => {
   const { id } = request.params
-  
-  return cities.city(id)
-  .then((nameOfCity) => {
-    const cityName = nameOfCity.name;
-  })
+  console.log('THIS IS THE CITY ID', id)
+  // return cities.city(id)
+  // .then((nameOfCity) => {
+  //   const cityName = nameOfCity.name;
+  // })
 
   return cities.postsFromCity(id)
-  .then((postTitles)=> {
-    console.log(postTitles)
-    response.send({ titles: postTitles }) 
+  .then((titles)=> {
+    console.log(titles)
+    response.render('city', { titles: titles}) 
   })
 })
 

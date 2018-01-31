@@ -1,0 +1,18 @@
+<% include partials/header %>
+  <% include partials/nav %>
+<% if(titles) { %>
+  <div class="postTitles">
+    <ul>
+      <% titles.forEach(function(blog) { %>
+        <a href="#">
+          <li>
+            <%= blog.title %>
+          </li>
+        </a>
+        <% }); %>
+    </ul>
+  </div>
+  <% } else { %>
+    <h1>This city doesn't have any reviews yet.</h1>
+  <% } %>
+<% include partials/footer %>

@@ -1,8 +1,8 @@
 <% include partials/header %>
 <% include partials/nav %>
 
-<div class="cities">
-  <% if(cities) { %>
+<% if(cities) { %>
+  <div class="cities">
     <table>
       <tr>
       <% for(var i = 0; i < cities.length; i++) { %>
@@ -21,6 +21,8 @@
       <% } %>
       </table>
     <% } %>
+
+
 </div>
 
 <% include partials/footer %>
