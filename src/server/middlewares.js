@@ -29,7 +29,6 @@ const setDefaultResponseLocals = (request, response, next) => {
 
 const restrictToLoggedInUsers = (request, response, next) => {  
   if (request.session.user) {
-    console.log(request.session.user)
     next();
   } else {
     response.redirect('/splash');
