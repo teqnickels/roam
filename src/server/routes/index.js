@@ -3,8 +3,8 @@ const privacyPolicy = require('./privacy-policy');
 const termsOfService = require('./terms-of-service');
 const authentication = require('./authentication');
 const user = require('./users');
-const posts = require('./posts');
-const cities = require('../../models/db/home')
+const posts = require('./profiles');
+const cities = require('../../models/db/index')
 const middlewares = require('../middlewares')
 const tableCreate = require('../../../')
 
@@ -29,27 +29,23 @@ router.get('/cities', (request, response) => {
   })
 })
 
-
 router.get('/cities/:id', (request, response) => {
   const { id } = request.params
-  console.log('THIS IS THE CITY ID', id)
-  // return cities.city(id)
-  // .then((nameOfCity) => {
-  //   const cityName = nameOfCity.name;
-  // })
-
   return cities.postsFromCity(id)
-  .then((titles)=> {
-    console.log(titles)
-    response.render('city', { titles: titles}) 
+  .then((blogPosts)=> {
+    response.render('city', {blogPosts}) 
   })
 })
 
-router.use('/posts', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);
+router.get('/cities/:id/:blog_id', (request, response) => {
+  response.send('This is the blog page')
+})
+
+// router.use('/posts', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);
 router.use('/profiles/', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);
 router.use('/', authentication);
 router.use('/', user );
-router.use('/profile', posts);
+router.use('/posts', posts);
 router.use('/privacy-policy', privacyPolicy);
 router.use('/terms-of-service', termsOfService);
 

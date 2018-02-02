@@ -1,12 +1,13 @@
 <% include partials/header %>
   <% include partials/nav %>
-<% if(titles) { %>
+  
+<% if(blogPosts) { %>
   <div class="postTitles">
     <ul>
-      <% titles.forEach(function(blog) { %>
-        <a href="#">
+      <% blogPosts.forEach(function(post) { %>
+        <a href="/posts/<%= post.user_id %>/<%= post.id%>">
           <li>
-            <%= blog.title %>
+            <%= post.title %>
           </li>
         </a>
         <% }); %>
@@ -15,4 +16,6 @@
   <% } else { %>
     <h1>This city doesn't have any reviews yet.</h1>
   <% } %>
+
+
 <% include partials/footer %>
