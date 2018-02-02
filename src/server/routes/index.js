@@ -41,7 +41,7 @@ router.get('/cities/:id/:blog_id', (request, response) => {
 router.use('/profiles/', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);
 router.use('/', authentication);
 router.use('/', user );
-router.use('/posts', posts);
+router.use('/profile', posts);
 router.use('/privacy-policy', privacyPolicy);
 router.use('/terms-of-service', termsOfService);
 
