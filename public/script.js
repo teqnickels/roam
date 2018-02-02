@@ -113,7 +113,7 @@ const getDirtyValues = function(updatedProfileValues) {
           updateProfileForm.innerHTML(response.error)
         }
       })
-    }
+    // }
 
   //GENERATE TABLE FOR CITIES PAGE
   // if (helpers.editProfilePath[1] === 'splash') {
