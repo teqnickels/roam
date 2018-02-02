@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const { user, profiles } = require('../../models/db/authentication');
+const { auth } = require('../../models/db/authentication');
+const { profiles } = require('../../models/db/profiles');
 
 router.get('/profiles/:id', (request, response) => {
   const id = request.params.id
-  return user.getUserById(id)
+  return auth.getUserById(id)
     .then((result) => {
       const collection = [];
       for (let i = 0; i < result.length; i++) {

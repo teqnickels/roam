@@ -7,10 +7,6 @@ const path = require('path');
 const session = require('express-session');
 const middlewares = require('./server/middlewares');
 
-// const { user } = require('./models/db/authentication');
-// const logger = require('morgan');
-
-
 const app = express();
 const newLocal = require('connect-pg-simple');
 

@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 
 const saltRounds = 10;
-const { user } = require('../../models/db/authentication');
+const { auth } = require('../../models/db/authentication');
 
 const hash = password => new Promise((resolve, reject) => {
   bcrypt.genSalt(saltRounds, (error, salt) => {
@@ -18,8 +18,7 @@ const hash = password => new Promise((resolve, reject) => {
 });
 
 const checkIfUserExistsInDb = (emailOnLoginAttempt) => {
-  console.log('running check user in helper functions');
-  return user.getUserByEmail(emailOnLoginAttempt)
+  return auth.getUserByEmail(emailOnLoginAttempt)
     .then((results) => {
       if ((results || {}).email == emailOnLoginAttempt) {
         newUser = {
