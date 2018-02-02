@@ -14,13 +14,9 @@ router.get('/splash', (request, response) => {
 
 // router.use(middlewares.restrictToLoggedInUsers)
 router.get('/', (request, response) => {
-  console.log(request.session.id);
-  response.render('home');
+  response.render('index');
 });
 
-router.get('/post', (request, response) => {
-  response.render('post');
-});
 
 router.get('/cities', (request, response) => {
   return cities.allCities()
