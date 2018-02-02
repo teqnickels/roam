@@ -1,0 +1,24 @@
+<% include partials/header %>
+<% include partials/nav %>
+
+  <p class="blog">
+    <% if(blog) { %>
+      <h1><%= blog.title %></h1>
+      <br>
+      <h4><%= blog.first_name %> <%= blog.last_name %></h4>
+      <br>
+      <br>
+      <section>
+      <%= blog.blog %>
+      </section>
+      <% } %>
+  </p>
+
+  <form action="/post" method="get">
+    <input name="title" placeholder="Title">
+    <br>
+    <br>
+    <textarea name="blog" cols="100" rows="20" placeholder="ENTER THINGS"> </textarea>
+  </form>
+
+<% include partials/footer %>
