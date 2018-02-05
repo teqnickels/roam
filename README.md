@@ -82,16 +82,16 @@ __A user should be able to:__
 __A user should be able to:__
 
 - [ ] Put at least 2 cities data in your database (make sure to include Oakland!)
-- [ ] View the "Oakland" city page (at "/cities/1").
-- [ ] See the site-wide header on the city page.
-- [ ] See the name of the city on the city page.
+- [x] View the "Oakland" city page (at "/cities/1").
+- [x] See the site-wide header on the city page.
+- [x] See the name of the city on the city page.
 - [ ] See an iconic photo of the city on the city page.
-- [ ] View a list of posts on the Oakland page.
+- [x] View a list of posts on the Oakland page.
 - [ ] See posts on city page sorted by newest first.
-- [ ] Click on post titles to go to the individual post "show" pages.
+- [x] Click on post titles to go to the individual post "show" pages.
 - [ ] Use an "Add New Post" button on the Oakland city page to pull up the new post form.
 - [ ] Create a new post for Oakland
-- [ ] Click "Edit" on ANY individual post, and be redirected to the edit form.
+- [x] Click "Edit" on ANY individual post, and be redirected to the edit form.
 - [ ] Click "delete" on ANY individual post.
 - [ ] See a pop-up that says: "Are you sure you want to delete {{title}}?" when clicking "delete"
 - [ ] Have the post deleted when confirming the pop-up.
@@ -107,17 +107,17 @@ __A user should be able to:__
 
 ## Sprint 2: Travel Tip CRUD
 __A user should be able to:__
-- [ ] Put at least 2 cities data in your database (make sure to include Oakland!)
-- [ ] View the "Oakland" city page (at "/cities/1").
-- [ ] See the site-wide header on the city page.
-- [ ] See the name of the city on the city page.
+- [x] Put at least 2 cities data in your database (make sure to include Oakland!)
+- [x] View the "Oakland" city page (at "/cities/1").
+- [x] See the site-wide header on the city page.
+- [x] See the name of the city on the city page.
 - [ ] See an iconic photo of the city on the city page.
-- [ ] View a list of posts on the Oakland page.
+- [x] View a list of posts on the Oakland page.
 - [ ] See posts on city page sorted by newest first.
-- [ ] Click on post titles to go to the individual post "show" pages.
+- [x] Click on post titles to go to the individual post "show" pages.
 - [ ] Use an "Add New Post" button on the Oakland city page to pull up the new post form.
 - [ ] Create a new post for Oakland
-- [ ] Click "Edit" on ANY individual post, and be redirected to the edit form.
+- [x] Click "Edit" on ANY individual post, and be redirected to the edit form.
 - [ ] Click "delete" on ANY individual post.
 - [ ] See a pop-up that says: "Are you sure you want to delete ?" when clicking "delete"
 - [ ] Have the post deleted when confirming the pop-up.
