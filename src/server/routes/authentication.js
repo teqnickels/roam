@@ -27,7 +27,7 @@ router.post('/signup', (request, response) => {
     });
 });
 
-router.post('/login', (request, response) => {  
+router.post('/login', (request, response) => {
   const {email} = request.body;
   const {password: passwordAttempt} = request.body;
 
@@ -44,7 +44,8 @@ router.post('/login', (request, response) => {
         email
       };
 
-      comparePasswords(passwordAttempt, userObject.password).then((res) => {
+      comparePasswords(passwordAttempt, userObject.password)
+      .then((res) => {
         if (res) {
           request.session.user = thisUser;
           response.redirect(`/profiles/${thisUser.id}`);

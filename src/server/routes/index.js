@@ -12,20 +12,18 @@ router.get('/splash', (request, response) => {
   response.render('splash');
 });
 
-// router.use(middlewares.restrictToLoggedInUsers)
-router.get('/', (request, response) => {
+router.get('/', middlewares.restrictToLoggedInUsers, (request, response) => {
   response.render('index');
 });
 
-
-router.get('/cities', (request, response) => {
+router.get('/cities', middlewares.restrictToLoggedInUsers, (request, response) => {
   return cities.allCities()
   .then((cities)=> {
     response.render('cities', { cities: cities })
   })
 })
 
-router.get('/cities/:id', (request, response) => {
+router.get('/cities/:id', middlewares.restrictToLoggedInUsers, (request, response) => {
   const { id } = request.params
   return cities.postsFromCity(id)
   .then((blogPosts)=> {
@@ -41,7 +39,7 @@ router.get('/cities/:id/:blog_id', (request, response) => {
 router.use('/profiles/', middlewares.restrictToLoggedInUsers, middlewares.setDefaultResponseLocals);
 router.use('/', authentication);
 router.use('/', user );
-router.use('/posts', posts);
+router.use('/profile', posts); //FIX THIS SHIT 🙄 /profiles or /posts?
 router.use('/privacy-policy', privacyPolicy);
 router.use('/terms-of-service', termsOfService);
 
