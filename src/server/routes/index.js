@@ -66,5 +66,3 @@ router.use('/', newPost);
 // router.use('/profile', posts); //FIX THIS SHIT 🙄 /profiles or /posts?
 router.use('/privacy-policy', privacyPolicy);
 router.use('/terms-of-service', termsOfService);
-
-module.exports = router;
