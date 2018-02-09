@@ -1,0 +1,12 @@
+<% include partials/header %>
+  <% include partials/nav %>
+  <% if(list) { %>
+    <ul>
+      <%= for(let i = 0; i < list; i++) { %>
+        <li>
+          <%= element.profile.first_name %>
+          <%= element.profile.last_name %>
+        </li>
+      <% } %>
+    </ul>
+<% include partials/footer %>
