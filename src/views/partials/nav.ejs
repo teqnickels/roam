@@ -1,6 +1,7 @@
 <div class="nav">
     <%if (!session) { %>
       <button class="nav-link login-button">Log In</button>
+
       <!--LOGIN Modal -->
       <div class="login-modal">
       <!-- Modal content -->
@@ -20,6 +21,7 @@
         <p>Don't have an account yet? <a href="splash.ejs">Sign Up Here</a></p>
       </div>
     <% } else {%>
+    <a href="/newPost"><button class="nav-link new-post-button">Create a New Post</button></a>
     <a href="/logout"><button class="nav-link logout-button">Log Out</a> 
   <% } %>
 </div>

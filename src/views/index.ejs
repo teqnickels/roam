@@ -1,4 +1,8 @@
 <% include partials/header %>
 <% include partials/nav %>
 <h1>Home</h1>
+  <form action="/getDoctor" method="POST">
+    <input type="text" placeholder="Enter Doctor's Name" name="doctorsName">
+    <button type="submit">SUBMIT</button>
+  </form>
 <% include partials/footer %>

@@ -92,7 +92,6 @@ const getDirtyValues = function(updatedProfileValues) {
   }
   
   function fetchProfileUpdate(obj) {
-    
     const url = '/save-updated-profile'
     fetch(url, {
       method: 'PUT',
