@@ -1,6 +1,9 @@
 <div class="nav">
     <%if (!session) { %>
-      <button class="nav-link login-button">Log In</button>
+      <div class="splash-nav">
+        <button class="nav-link login-button"><span class="nav-button-text">Log In</span></button>
+        <button class="nav-link signup-button"><span class="nav-button-text">Sign Up</span></button>
+      </div>
 
       <!--LOGIN Modal -->
       <div class="login-modal">

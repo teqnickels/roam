@@ -1,44 +1,21 @@
-<% include partials/header %>
-<% include partials/nav %>
+<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 
+<div class="splash-nav"><% include partials/nav %></div>
 
-  <div class="slideshow-container">
-
-    <!-- Full-width images with number and caption text -->
-    <div class="mySlides fade">
-      <img class="slide-image" src="/images/image4.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides fade">
-      <img class="slide-image" src="/images/image7.jpg" style="width:100%">
-    </div>
-
-    <div class="mySlides fade">
-      <img class="slide-image" src="/images/image010.jpg" style="width:100%">
-    </div>
-
-    <div class ="words">
-      <p>
-        Lorem ipsum dolor amet affogato thundercats stumptown meditation yr, tilde truffaut photo booth seitan. XOXO yuccie paleo, umami skateboard chambray cliche occupy. Wolf moon truffaut enamel pin PBR.
-      </p>
-    </div>
-  </div>
-
-<form action="/signup" method="POST">
-      <input type="text" placeholder="First Name" name="first_name" required/>
-      <br>
-      <br>
-      <input type="text" placeholder="Last Name" name="last_name" required/>
-      <br>
-      <br>
-      <input type="text" placeholder="Email" name="email" required/>
-      <br>
-      <br>
-      <select name="Bay Area Cities">
+<div class="container">
+  <img class="splash-head-image" src="/images/alex-hockett.jpg">
+  
+  <div class="splash-search">
+    <form action="/searchResults" method="get">
+      <input class="nav-search" type="text" placeholder="Find women's, men's, and pediatric doctors">
+      <input type="text" name="city" placeholder="Near Oakland, Ca" list="cityname">
+      <datalist id="cityname">
         <option value="alameda">Alameda</option>
         <option value="albany">Albany</option>
         <option value="american-canyon">American Canyon</option>
-        <option value="antioch">Antioch</option>     
+        <option value="antioch">Antioch</option>
         <option value="atherton">Atherton</option>
         <option value="belmont">Belmont</option>
         <option value="belvedere">Belvedere</option>
@@ -131,15 +108,27 @@
         <option value="windsor">Windsor</option>
         <option value="woodside">Woodside</option>
         <option value="sebastopol">Yountville</option>
-      </select>
-        <br>
-        <br>
-        <input type="submit">
-      <br>
-      <br>
-      <input type="password" placeholder="passowrd" name="password" required/>
-      <br>
-      <br>
-      <button>Submit</button>
+      </datalist>
+      <button class="search-button">
+        <i class="fas fa-search icon"></i>
+      </button>
     </form>
+  </div>
+  
+  <div class="help-the-community-section">
+    <img class="hospital-star" src="/images/hospitalStar.png">
+    <div class="container">
+    <h1 class="splash-h1"> Help The Community</h1>
+      <h3 class="splash-subheading">Start helping others by sharing your experience</h3>
+      <a href="signup"><button class="first-review-button">Write Your First Review</button></a>
+    </div>
+  </div>
+</div>
+<div class="browse-by-field">
+  <img class="field-images" src="/images/womens-health.png">
+  <img class="field-images" src="/images/mens-health.png">
+  <img class="field-images" src="/images/pediatrics.png">
+  <img class="field-images" src="/images/specialists.png">
+</div>
+
 <% include partials/footer %>
